@@ -13,17 +13,19 @@ public class EconomyClass extends Ticket {
     }
 
     public double getTotalPriceE() {
-
+        double additionalPayment = 0;
         if (service) {
 
-            super.setPrice(super.getPrice() + 47.59);
+            additionalPayment += 47.59;
 
         }
+        additionalPayment += super.getAirline().getAdditionalPayment();
+        additionalPayment += super.getDestination().getAdditionalPayment();
+        super.setPrice(getPrice() + additionalPayment);
+
         if (super.isRoundTripTicket()) {
             super.setPrice(super.getPrice() * (1.85));
         }
-        super.setPrice(super.getPrice() + super.getAirline().getAdditionalPayment());
-        super.setPrice(super.getPrice() + super.getDestination().getAdditionalPayment());
 
         return super.getPrice();
     }
