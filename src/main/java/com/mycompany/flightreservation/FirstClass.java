@@ -4,10 +4,7 @@
  */
 package com.mycompany.flightreservation;
 
-/**
- *
- * @author Lenovo
- */
+
 public class FirstClass extends Ticket {
 
     boolean playstation;
@@ -20,29 +17,22 @@ public class FirstClass extends Ticket {
     }
 
     public double getTotalPriceF() {
-
+        double additionalPayment = 0;
         if (playstation) {
-            super.setPrice(super.getPrice() + 150.97);
+            additionalPayment += 150.97;
         }
         if (unlimitedBaggage) {
-            super.setPrice(super.getPrice() + 200.38);
+            additionalPayment += 200.38;
         }
 
-        super.setPrice(super.getPrice() + (100 * bedNumber));
-        
-        super.setPrice(super.getPrice() + super.getAirline().getAdditionalPayment());
-        super.setPrice(super.getPrice() + super.getDestination().getAdditionalPayment());
+        additionalPayment += (100 * bedNumber);
+
+        additionalPayment += super.getAirline().getAdditionalPayment();
+        additionalPayment += super.getDestination().getAdditionalPayment();
+        super.setPrice(getPrice() + additionalPayment);
 
         return getPrice();
-        
-         
-    
+
     }
-    
-    
 
 }
-
-
-
-

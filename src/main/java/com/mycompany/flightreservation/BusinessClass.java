@@ -18,24 +18,25 @@ public class BusinessClass extends Ticket {
     }
 
     public double getTotalPriceB() {
-
+        int additionalPayment = 0;
         if (meetingroom) {
 
-            super.setPrice(super.getPrice() + 157.23);
+            additionalPayment += 157.23;
 
         }
         if (luxuryservice) {
 
-            super.setPrice(super.getPrice() + 112.49);
+            additionalPayment += 112.49;
 
         }
+        additionalPayment += super.getAirline().getAdditionalPayment();
+        additionalPayment += super.getDestination().getAdditionalPayment();
+        super.setPrice(getPrice() + additionalPayment);
 
         if (super.isRoundTripTicket()) {
             super.setPrice(super.getPrice() * 1.85);
         }
-        super.setPrice(super.getPrice() + super.getAirline().getAdditionalPayment());
-        super.setPrice(super.getPrice() + super.getDestination().getAdditionalPayment());
-        
+
         return getPrice();
 
     }
