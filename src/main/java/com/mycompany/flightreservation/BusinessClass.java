@@ -4,17 +4,19 @@
  */
 package com.mycompany.flightreservation;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Lenovo
  */
 public class BusinessClass extends Ticket {
-
+ static int defaultPrice=300;
     boolean meetingroom;
     boolean luxuryservice;
 
-    public BusinessClass(int price, Airport airport, Airline airline) {
-        super(300, airport, airline);
+    public BusinessClass(int price, Airport airport) {
+        super(defaultPrice, airport);
     }
 
     public double getTotalPriceB() {
@@ -29,7 +31,7 @@ public class BusinessClass extends Ticket {
             additionalPayment += 112.49;
 
         }
-        additionalPayment += super.getAirline().getAdditionalPayment();
+     
         additionalPayment += super.getDestination().getAdditionalPayment();
         super.setPrice(getPrice() + additionalPayment);
 
@@ -40,5 +42,5 @@ public class BusinessClass extends Ticket {
         return getPrice();
 
     }
-
 }
+    

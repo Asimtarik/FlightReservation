@@ -4,22 +4,18 @@
  */
 package com.mycompany.flightreservation;
 
-/**
- *
- * @author Lenovo
- */
 public class Ticket {
 
     private double price;
     private int seatNumber;
     private Passenger passenger;
     private Airport airport;
-    private Airline airline;
     private Destination destination;
     private boolean roundTripTicket;
 
-    public Ticket(int price, Airport airport, Airline airline) {
-
+    public Ticket(int price, Airport airport) {
+        this.price = price;
+        this.airport = airport;
     }
 
     public double getPrice() {
@@ -54,16 +50,8 @@ public class Ticket {
         this.airport = airport;
     }
 
-    public Airline getAirline() {
-        return airline;
-    }
-
     public boolean isRoundTripTicket() {
         return roundTripTicket;
-    }
-
-    public void setAirline(Airline airline) {
-        this.airline = airline;
     }
 
     public void setRoundTripTicket(boolean roundTripTicket) {

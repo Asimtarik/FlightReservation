@@ -4,14 +4,31 @@
  */
 package com.mycompany.flightreservation;
 
-public class Passenger {
+import java.util.ArrayList;
+
+public class Passenger extends Users{
+
+   
 
     private String firstName;
     private String lastName;
     private String adress;
-    private int id;
     private int cardNumber;
     private int phoneNumber;
+    private ArrayList<Ticket> ticket = new ArrayList();
+    
+    
+   public Passenger(String userName, String password,int id,String firstName, String lastName, String adress, int cardNumber,int phoneNumber){
+        super.setUserName(userName);
+        super.setPassword(password);
+        super.setId(id);
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.adress=adress;
+        this.cardNumber=cardNumber;
+        this.phoneNumber=phoneNumber;
+        
+    }
 
     public String getFirstName() {
         return firstName;
@@ -24,12 +41,6 @@ public class Passenger {
 
     public String getAdress() {
         return adress;
-    }
-
-    public int getId() {
-
-        return id;
-
     }
 
     public int getCardNumber() {
@@ -61,12 +72,6 @@ public class Passenger {
         if (adress.length() != 0) {
             this.adress = adress;
         }
-    }
-
-    public void setId(int id) {
-
-        this.id = id;
-
     }
 
     public void setCardNumber(int cardNumber) {

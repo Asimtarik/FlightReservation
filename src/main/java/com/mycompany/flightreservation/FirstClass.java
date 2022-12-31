@@ -6,13 +6,13 @@ package com.mycompany.flightreservation;
 
 
 public class FirstClass extends Ticket {
-
+static int defaultPrice=500;
     boolean playstation;
     boolean unlimitedBaggage;
     int bedNumber;
 
-    public FirstClass(int price, Airport airport, Airline airline) {
-        super(500, airport, airline);
+    public FirstClass(int price, Airport airport) {
+        super(defaultPrice, airport);
 
     }
 
@@ -27,7 +27,7 @@ public class FirstClass extends Ticket {
 
         additionalPayment += (100 * bedNumber);
 
-        additionalPayment += super.getAirline().getAdditionalPayment();
+        
         additionalPayment += super.getDestination().getAdditionalPayment();
         super.setPrice(getPrice() + additionalPayment);
 

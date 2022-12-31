@@ -9,26 +9,27 @@ public class Airport {
     private String airportName;
     private String country;
     private String city;
-    private String airportID;
+    private int airportID;
 
     public Airport() {
         this.airportName = "";
         this.country = "";
         this.city = "";
-        this.airportID = "";
+        this.airportID = 0;
     }
 
-    public Airport(String airportName, String airportID, String city, String country) {
+    public Airport(String airportName, int airportID, String city, String country) {
 
-        this.setAirportName(airportName);
-        this.setCountry(country);
-        this.setCity(city);
-        this.setAirportID(airportID);
+        this.airportName=airportName;
+        this.airportID=airportID;
+        this.country=country;
+        this.city=city;
+       
     }
 
     public void setAirportName(String airportName) {
-        if (airportID.length() != 0) {
-            this.airportID = airportID.toUpperCase();
+        if (airportID!= 0) {
+            //this.airportID = airportID.toUpperCase();
         }
     }
 
@@ -48,10 +49,10 @@ public class Airport {
         }
     }
 
-    public void setAirportID(String airportID) {
+    public void setAirportID(int airportID) {
 
-        if (airportID.length() != 0) {
-            this.airportID = airportID.toUpperCase();
+        if (airportID!= 0) {
+            //this.airportID = airportID.toUpperCase();
         } else {
             System.out.println("Airport ID is invalid, please try again.");
         }
@@ -72,7 +73,7 @@ public class Airport {
         return city;
     }
 
-    public String getAirportID() {
+    public int getAirportID() {
         return airportID;
     }
 
