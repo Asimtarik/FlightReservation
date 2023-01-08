@@ -10,18 +10,17 @@ import java.util.ArrayList;
 public class Admin extends Users {
     
     
-   ArrayList<Airport> airports= new ArrayList(); 
-    
+       
     public void addAirport(String airportName, int airportID, String city, String country){
         Airport airport=new Airport(airportName, airportID,  city, country);
-        airports.add(airport);
+        Booking.airports.add(airport);
     }
     
     
     public void removeAirport(String airportName){
-        for (int i = 0; i <airports.size(); i++) {
-            if (airportName.equals(airports.get(i).getAirportName())) {
-                airports.remove(i);
+        for (int i = 0; i <Booking.airports.size(); i++) {
+            if (airportName.equals(Booking.airports.get(i).getAirportName())) {
+                Booking.airports.remove(i);
             }
              
         }
@@ -36,7 +35,7 @@ public class Admin extends Users {
         public void removePassenger(int id){
             for (int i = 0; i <Booking.getUsersArray().size(); i++) {
             if (id==Booking.getUsersArray().get(i).getId()) {
-                airports.remove(i);
+                Booking.airports.remove(i);
             }
              
         }

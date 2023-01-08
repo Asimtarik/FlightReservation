@@ -12,21 +12,21 @@ import java.util.Scanner;
  */
 public class BusinessClass extends Ticket {
  static int defaultPrice=300;
-    boolean meetingroom;
-    boolean luxuryservice;
+    private boolean meetingroom;
+    private boolean luxuryservice;
 
-    public BusinessClass(int price, Airport airport) {
+    public BusinessClass(Airport airport) {
         super(defaultPrice, airport);
     }
 
     public double getTotalPriceB() {
         int additionalPayment = 0;
-        if (meetingroom) {
+        if (isMeetingroom()) {
 
             additionalPayment += 157.23;
 
         }
-        if (luxuryservice) {
+        if (isLuxuryservice()) {
 
             additionalPayment += 112.49;
 
@@ -41,6 +41,25 @@ public class BusinessClass extends Ticket {
 
         return getPrice();
 
+    }
+
+    public boolean isMeetingroom() {
+        return meetingroom;
+    }
+
+    
+    public void setMeetingroom(boolean meetingroom) {
+        this.meetingroom = meetingroom;
+    }
+
+  
+    public boolean isLuxuryservice() {
+        return luxuryservice;
+    }
+
+
+    public void setLuxuryservice(boolean luxuryservice) {
+        this.luxuryservice = luxuryservice;
     }
 }
     

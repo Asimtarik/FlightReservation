@@ -7,25 +7,25 @@ package com.mycompany.flightreservation;
 
 public class FirstClass extends Ticket {
 static int defaultPrice=500;
-    boolean playstation;
-    boolean unlimitedBaggage;
-    int bedNumber;
+    private boolean playstation;
+    private boolean unlimitedBaggage;
+    private int bedNumber;
 
-    public FirstClass(int price, Airport airport) {
+    public FirstClass( Airport airport) {
         super(defaultPrice, airport);
 
     }
 
     public double getTotalPriceF() {
         double additionalPayment = 0;
-        if (playstation) {
+        if (isPlaystation()) {
             additionalPayment += 150.97;
         }
-        if (unlimitedBaggage) {
+        if (isUnlimitedBaggage()) {
             additionalPayment += 200.38;
         }
 
-        additionalPayment += (100 * bedNumber);
+        additionalPayment += (100 * getBedNumber());
 
         
         additionalPayment += super.getDestination().getAdditionalPayment();
@@ -33,6 +33,36 @@ static int defaultPrice=500;
 
         return getPrice();
 
+    }
+
+   
+    public boolean isPlaystation() {
+        return playstation;
+    }
+
+    
+    public void setPlaystation(boolean playstation) {
+        this.playstation = playstation;
+    }
+
+   
+    public boolean isUnlimitedBaggage() {
+        return unlimitedBaggage;
+    }
+
+    
+    public void setUnlimitedBaggage(boolean unlimitedBaggage) {
+        this.unlimitedBaggage = unlimitedBaggage;
+    }
+
+    
+    public int getBedNumber() {
+        return bedNumber;
+    }
+
+  
+    public void setBedNumber(int bedNumber) {
+        this.bedNumber = bedNumber;
     }
 
 }

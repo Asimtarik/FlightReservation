@@ -5,8 +5,9 @@
 package com.mycompany.flightreservation;
 
 public class EconomyClass extends Ticket {
-static int defaultPrice=150;
-    boolean service;
+
+    static int defaultPrice = 150;
+    private boolean service;
 
     public EconomyClass(Airport airport) {
         super(defaultPrice, airport);
@@ -14,12 +15,12 @@ static int defaultPrice=150;
 
     public double getTotalPriceE() {
         double additionalPayment = 0;
-        if (service) {
+        if (isService()) {
 
             additionalPayment += 47.59;
 
         }
-       
+
         additionalPayment += super.getDestination().getAdditionalPayment();
         super.setPrice(getPrice() + additionalPayment);
 
@@ -28,5 +29,13 @@ static int defaultPrice=150;
         }
 
         return super.getPrice();
+    }
+
+    public boolean isService() {
+        return service;
+    }
+
+    public void setService(boolean service) {
+        this.service = service;
     }
 }

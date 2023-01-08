@@ -9,8 +9,9 @@ import java.util.ArrayList;
 public class Booking {
 
     static private ArrayList<Users> users = new ArrayList();
-    static private ArrayList<Ticket> ticket = new ArrayList();
-
+    static ArrayList<Airport> airports= new ArrayList(); 
+    
+    
     static public void createAcc(String userName, String password, String firstName, String lastName, String adress, int id, int cardNumber, int phoneNumber) {
         Passenger passenger = new Passenger(userName, password, id, firstName, lastName, adress, cardNumber, phoneNumber);
         users.add(passenger);
@@ -37,6 +38,14 @@ public class Booking {
         }
         return null;
 
+    }
+    public static void ListAirport(){
+        for (int i = 0; i <airports.size(); i++) {
+            System.out.println((i+1)+"- "+ airports.get(i).getAirportName());
+            
+        }
+     
+        
     }
 
 }

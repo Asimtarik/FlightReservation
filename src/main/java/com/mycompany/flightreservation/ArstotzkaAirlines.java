@@ -60,7 +60,7 @@ public class ArstotzkaAirlines {
     }
 
     public static void main(String[] args) {
-
+        int input;
         Admin admin = new Admin();
         admin.setId(0);
         admin.setUserName("Asim");
@@ -68,6 +68,23 @@ public class ArstotzkaAirlines {
 
         Booking.getUsersArray().add(admin);
         Login();
+
+        System.out.println("""
+                             1- Press 1 to Login.
+                             2- Press 2 to Register.
+                  """);
+        input = sc.nextInt();
+
+        switch (input) {
+
+            case 1:
+                Login();
+
+            case 2:
+                Register();
+
+        }
+
     }
 
     public static void userInterface() {
@@ -227,7 +244,118 @@ public class ArstotzkaAirlines {
 
                     }
 
-                } else {
+                } else if (account instanceof Passenger) {
+
+                    Passenger passengerAccount = (Passenger) account;
+                    System.out.println("""
+                                   Press 1 to create new reservation.
+                                   Press 2 to list reservations.
+                                   Press 3 to log out""");
+                    input = sc.nextInt();
+
+                    switch (input) {
+
+                        case 1:
+                            Booking.ListAirport();
+
+                            System.out.print("Choose airport: ");
+                            input = sc.nextInt();
+                            Airport airport = Booking.airports.get(input - 1);
+                            System.out.println("Is it round trip ticket? Press 1-Yes 2-No");
+                            input = sc.nextInt();
+
+                            boolean isRoundTripTicket = (input == 1);
+
+                            System.out.println("Please enter seat number");
+                            input = sc.nextInt();
+                            int seatnumber = sc.nextInt();
+
+                            System.out.println("""
+                                               Press 1 to choose Economyclass ticket.
+                                               Press 2 to choose Businessclass ticket.
+                                               Press 3 to choose FirstClass ticket.
+                                               """);
+                            input = sc.nextInt();
+                            switch (input) {
+
+                                case 1:
+                                    System.out.println("Is it round trip ticket? Press 1-Yes 2-No");
+                                    input = sc.nextInt();
+
+                                    boolean service = (input == 1);
+
+                                    EconomyClass economyClass = passengerAccount.CreateEcoClassReservation(airport, isRoundTripTicket, seatnumber, service);
+                                    economyClass.setPrice(economyClass.getTotalPriceE());
+                                    System.out.println("Price: " + economyClass.getPrice());
+
+                                    System.out.println("Do you confirm? Press 1-Yes 2-No");
+                                    input = sc.nextInt();
+
+                                    boolean choice = (input == 1);
+                                    if (choice) {
+                                        passengerAccount.getTicket().add(economyClass);
+
+                                    }
+                                case 2:
+
+                                    System.out.println("Is luxury service included? Press 1-Yes 2-No");
+                                    input = sc.nextInt();
+
+                                    boolean luxuryservice = (input == 1);
+                                    System.out.println("Is meetingroom included? Press 1-Yes 2-No");
+                                    input = sc.nextInt();
+
+                                    boolean meetingroom = (input == 1);
+                                    BusinessClass businessClass = passengerAccount.CreateBusinessClassReservation(airport, isRoundTripTicket, seatnumber, luxuryservice, meetingroom);
+
+                                    System.out.println("Price: " + businessClass.getPrice());
+
+                                    System.out.println("Do you confirm? Press 1-Yes 2-No");
+                                    input = sc.nextInt();
+
+                                    boolean choice1 = (input == 1);
+                                    if (choice1) {
+                                        passengerAccount.getTicket().add(businessClass);
+
+                                    }
+                                case 3:
+
+                                    System.out.println("Is playstation included? Press 1-Yes 2-No");
+                                    input = sc.nextInt();
+
+                                    boolean playstation = (input == 1);
+                                    System.out.println("Is unlimited baggage included? Press 1-Yes 2-No");
+                                    input = sc.nextInt();
+
+                                    boolean unlimitedBaggage = (input == 1);
+                                    System.out.println("Please enter the bed count.");
+                                    int bedNumber = sc.nextInt();
+                                    FirstClass firstClass= passengerAccount.CreateFirstClassReservation(airport, isRoundTripTicket, seatnumber, playstation, unlimitedBaggage, bedNumber);
+                                    System.out.println("Price: " + firstClass.getPrice());
+
+                                    System.out.println("Do you confirm? Press 1-Yes 2-No");
+                                    input = sc.nextInt();
+
+                                    boolean choice2 = (input == 1);
+                                    if (choice2) {
+                                        passengerAccount.getTicket().add(firstClass);
+
+                                    }
+                            }
+                        case 2:
+                            passengerAccount.listReservations();
+
+                        case 3:
+                            account = null;
+                            passengerAccount = null;
+
+                            Login();
+                            return;
+
+                        default:
+                            System.out.println("Invalid number!!! Please try again.");
+
+                    }
 
                 }
 
