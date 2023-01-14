@@ -38,6 +38,7 @@ public class Airport {
             this.country = country;
         } else {
             System.out.println("Airline name is invalid, please try again.");
+           
         }
     }
 

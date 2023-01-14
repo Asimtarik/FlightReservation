@@ -14,6 +14,7 @@ public class Admin extends Users {
     public void addAirport(String airportName, int airportID, String city, String country){
         Airport airport=new Airport(airportName, airportID,  city, country);
         Booking.airports.add(airport);
+        System.out.println("Airport successfully added.");
     }
     
     

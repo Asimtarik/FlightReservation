@@ -1,4 +1,3 @@
-
 package com.mycompany.flightreservation;
 
 public class Destination {
@@ -21,5 +20,4 @@ public class Destination {
     public void setAdditionalPayment(int additionalPayment) {
         this.additionalPayment = additionalPayment;
     }
-
 }

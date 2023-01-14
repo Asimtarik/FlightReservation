@@ -11,7 +11,8 @@ import java.util.Scanner;
  * @author Lenovo
  */
 public class BusinessClass extends Ticket {
- static int defaultPrice=300;
+
+    static int defaultPrice = 300;
     private boolean meetingroom;
     private boolean luxuryservice;
 
@@ -31,7 +32,7 @@ public class BusinessClass extends Ticket {
             additionalPayment += 112.49;
 
         }
-     
+
         additionalPayment += super.getDestination().getAdditionalPayment();
         super.setPrice(getPrice() + additionalPayment);
 
@@ -47,19 +48,15 @@ public class BusinessClass extends Ticket {
         return meetingroom;
     }
 
-    
     public void setMeetingroom(boolean meetingroom) {
         this.meetingroom = meetingroom;
     }
 
-  
     public boolean isLuxuryservice() {
         return luxuryservice;
     }
-
 
     public void setLuxuryservice(boolean luxuryservice) {
         this.luxuryservice = luxuryservice;
     }
 }
-    

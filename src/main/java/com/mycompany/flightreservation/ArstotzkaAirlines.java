@@ -46,16 +46,17 @@ public class ArstotzkaAirlines {
 
     private static void Login() {
         System.out.print("Username: ");
-        String username = sc.nextLine();
+        String username = sc.next();
 
         System.out.print("Password: ");
-        String password = sc.nextLine();
+        String password = sc.next();
 
         account = Booking.Login(username, password);
         if (account != null) {
             userInterface();
         } else {
             System.out.println("Invalid username or password!!!");
+            Login();
         }
     }
 
@@ -66,7 +67,10 @@ public class ArstotzkaAirlines {
         admin.setUserName("Asim");
         admin.setPassword("asd");
 
+        Passenger passenger = new Passenger("Asim", "Tarik", 4, "Asim", "Kutluer", "İstanbul", 1, 2);
+
         Booking.getUsersArray().add(admin);
+        Booking.getUsersArray().add(passenger);
         Login();
 
         System.out.println("""
@@ -121,7 +125,7 @@ public class ArstotzkaAirlines {
 
                                     System.out.print("City: ");
                                     String city = sc.nextLine();
-
+                                    city = sc.nextLine();
                                     System.out.print("Country: ");
                                     String country = sc.nextLine();
 
@@ -132,7 +136,9 @@ public class ArstotzkaAirlines {
                                 case 2:
                                     System.out.println("Please type airport name.");
                                     String removeAirport = sc.nextLine();
+                                    removeAirport = sc.nextLine();
                                     adminAccount.removeAirport(removeAirport);
+                                    System.out.println("Airport deleted successfully");
 
                                     continue;
 
@@ -158,7 +164,7 @@ public class ArstotzkaAirlines {
                                     int newPriceEco = sc.nextInt();
 
                                     EconomyClass.defaultPrice = newPriceEco;
-
+                                    System.out.println("Default Price changed successfully.");
                                     continue;
 
                                 case 2:
@@ -168,7 +174,7 @@ public class ArstotzkaAirlines {
                                     int newPriceBusiness = sc.nextInt();
 
                                     BusinessClass.defaultPrice = newPriceBusiness;
-
+                                    System.out.println("Default Price changed successfully.");
                                     continue;
 
                                 case 3:
@@ -178,6 +184,7 @@ public class ArstotzkaAirlines {
                                     int newPriceFirst = sc.nextInt();
 
                                     FirstClass.defaultPrice = newPriceFirst;
+                                    System.out.println("Default Price changed successfully.");
 
                                     continue;
 
@@ -195,6 +202,7 @@ public class ArstotzkaAirlines {
                                 case 1:
                                     System.out.print("Username: ");
                                     String username = sc.nextLine();
+                                    username = sc.nextLine();
 
                                     System.out.print("Password: ");
                                     String password = sc.nextLine();
@@ -218,13 +226,14 @@ public class ArstotzkaAirlines {
                                     int phoneNumber = sc.nextInt();
 
                                     adminAccount.addPassenger(username, password, id, firstName, lastName, adress, cardNumber, phoneNumber);
+                                    System.out.println("New passenger registered.");
                                     continue;
 
                                 case 2:
                                     System.out.println("Please type passenger id.");
                                     int removePassenger = sc.nextInt();
                                     adminAccount.removePassenger(removePassenger);
-
+                                    System.out.println("Passenger deleted.");
                                     continue;
                                 default:
                                     System.out.println("Invalid number!!! Please try again.");
@@ -241,6 +250,7 @@ public class ArstotzkaAirlines {
 
                         default:
                             System.out.println("Invalid number!!! Please try again.");
+                            Login();
 
                     }
 
@@ -267,7 +277,7 @@ public class ArstotzkaAirlines {
                             boolean isRoundTripTicket = (input == 1);
 
                             System.out.println("Please enter seat number");
-                            input = sc.nextInt();
+
                             int seatnumber = sc.nextInt();
 
                             System.out.println("""
@@ -279,8 +289,6 @@ public class ArstotzkaAirlines {
                             switch (input) {
 
                                 case 1:
-                                    System.out.println("Is it round trip ticket? Press 1-Yes 2-No");
-                                    input = sc.nextInt();
 
                                     boolean service = (input == 1);
 
@@ -294,7 +302,7 @@ public class ArstotzkaAirlines {
                                     boolean choice = (input == 1);
                                     if (choice) {
                                         passengerAccount.getTicket().add(economyClass);
-
+                                        break;
                                     }
                                 case 2:
 
@@ -308,7 +316,7 @@ public class ArstotzkaAirlines {
                                     boolean meetingroom = (input == 1);
                                     BusinessClass businessClass = passengerAccount.CreateBusinessClassReservation(airport, isRoundTripTicket, seatnumber, luxuryservice, meetingroom);
 
-                                    System.out.println("Price: " + businessClass.getPrice());
+                                    System.out.println("Price: " + businessClass.getTotalPriceB());
 
                                     System.out.println("Do you confirm? Press 1-Yes 2-No");
                                     input = sc.nextInt();
@@ -316,7 +324,7 @@ public class ArstotzkaAirlines {
                                     boolean choice1 = (input == 1);
                                     if (choice1) {
                                         passengerAccount.getTicket().add(businessClass);
-
+                                        break;
                                     }
                                 case 3:
 
@@ -330,8 +338,8 @@ public class ArstotzkaAirlines {
                                     boolean unlimitedBaggage = (input == 1);
                                     System.out.println("Please enter the bed count.");
                                     int bedNumber = sc.nextInt();
-                                    FirstClass firstClass= passengerAccount.CreateFirstClassReservation(airport, isRoundTripTicket, seatnumber, playstation, unlimitedBaggage, bedNumber);
-                                    System.out.println("Price: " + firstClass.getPrice());
+                                    FirstClass firstClass = passengerAccount.CreateFirstClassReservation(airport, isRoundTripTicket, seatnumber, playstation, unlimitedBaggage, bedNumber);
+                                    System.out.println("Price: " + firstClass.getTotalPriceF());
 
                                     System.out.println("Do you confirm? Press 1-Yes 2-No");
                                     input = sc.nextInt();
@@ -339,7 +347,7 @@ public class ArstotzkaAirlines {
                                     boolean choice2 = (input == 1);
                                     if (choice2) {
                                         passengerAccount.getTicket().add(firstClass);
-
+                                        break;
                                     }
                             }
                         case 2:
