@@ -18,6 +18,7 @@ public class ArstotzkaAirlines {
 
         System.out.print("Username: ");
         String username = sc.nextLine();
+        username = sc.nextLine();
 
         System.out.print("Password: ");
         String password = sc.nextLine();
@@ -71,7 +72,7 @@ public class ArstotzkaAirlines {
 
         Booking.getUsersArray().add(admin);
         Booking.getUsersArray().add(passenger);
-        Login();
+        
 
         System.out.println("""
                              1- Press 1 to Login.
@@ -86,6 +87,9 @@ public class ArstotzkaAirlines {
 
             case 2:
                 Register();
+                System.out.println("New passenger registered successfully.");
+                Login();
+                return;
 
         }
 
@@ -260,7 +264,7 @@ public class ArstotzkaAirlines {
                     System.out.println("""
                                    Press 1 to create new reservation.
                                    Press 2 to list reservations.
-                                   Press 3 to log out""");
+                                   Press 3 to log out """);
                     input = sc.nextInt();
 
                     switch (input) {
@@ -303,6 +307,8 @@ public class ArstotzkaAirlines {
                                     if (choice) {
                                         passengerAccount.getTicket().add(economyClass);
                                         break;
+                                    } else {
+                                        Login();
                                     }
                                 case 2:
 
@@ -325,6 +331,8 @@ public class ArstotzkaAirlines {
                                     if (choice1) {
                                         passengerAccount.getTicket().add(businessClass);
                                         break;
+                                    } else {
+                                        Login();
                                     }
                                 case 3:
 
@@ -348,6 +356,8 @@ public class ArstotzkaAirlines {
                                     if (choice2) {
                                         passengerAccount.getTicket().add(firstClass);
                                         break;
+                                    } else {
+                                        Login();
                                     }
                             }
                         case 2:

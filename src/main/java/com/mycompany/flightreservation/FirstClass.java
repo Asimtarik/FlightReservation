@@ -28,7 +28,6 @@ static int defaultPrice=500;
         additionalPayment += (100 * getBedNumber());
 
         
-        additionalPayment += super.getDestination().getAdditionalPayment();
         super.setPrice(getPrice() + additionalPayment);
 
         return getPrice();

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Booking {
 
-    static private ArrayList<Users> users = new ArrayList();
+    static  ArrayList<Users> users = new ArrayList();
     static ArrayList<Airport> airports= new ArrayList(); 
     
     

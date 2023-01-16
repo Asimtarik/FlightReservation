@@ -5,7 +5,7 @@
 package com.mycompany.flightreservation;
 
 import java.util.ArrayList;
-
+import com.mycompany.flightreservation.Booking;
 
 public class Admin extends Users {
     
@@ -31,6 +31,7 @@ public class Admin extends Users {
     
     public void addPassenger(String userName, String password,int id,String firstName, String lastName, String adress, int cardNumber,int phoneNumber){
         Passenger passenger= new Passenger(userName,password,id,firstName,lastName,adress,cardNumber,phoneNumber);
+         Booking.users.add(passenger);
             
         }
         public void removePassenger(int id){

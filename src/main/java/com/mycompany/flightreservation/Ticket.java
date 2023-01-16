@@ -10,7 +10,6 @@ public class Ticket {
     private int seatNumber;
     private Passenger passenger;
     private Airport airport;
-    private Destination destination;
     private boolean roundTripTicket;
 
     public Ticket(int price, Airport airport) {
@@ -58,12 +57,5 @@ public class Ticket {
         this.roundTripTicket = roundTripTicket;
     }
 
-    public Destination getDestination() {
-        return destination;
-    }
-
-    public void setDestination(Destination destination) {
-        this.destination = destination;
-    }
-
+  
 }

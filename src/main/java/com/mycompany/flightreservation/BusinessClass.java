@@ -33,7 +33,7 @@ public class BusinessClass extends Ticket {
 
         }
 
-        additionalPayment += super.getDestination().getAdditionalPayment();
+        
         super.setPrice(getPrice() + additionalPayment);
 
         if (super.isRoundTripTicket()) {
